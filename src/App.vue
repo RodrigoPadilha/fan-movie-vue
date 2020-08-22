@@ -3,7 +3,13 @@
     <ul>
         <li v-for="item of lista" :key="item.id">
           <div>
-              {{item.original_title}}
+              <h2>{{item.original_title}}</h2>
+              <img :src="'http://image.tmdb.org/t/p/w45/' + item.poster_path" :alt="item.title">
+              <img :src="'http://image.tmdb.org/t/p/w92/' + item.poster_path" :alt="item.title">
+              <img :src="'http://image.tmdb.org/t/p/w154/' + item.poster_path" :alt="item.title">
+              <img :src="'http://image.tmdb.org/t/p/w185/' + item.poster_path" :alt="item.title">
+              <img :src="'http://image.tmdb.org/t/p/w300/' + item.poster_path" :alt="item.title">              
+              <img :src="'http://image.tmdb.org/t/p/w500/' + item.poster_path" :alt="item.title">              
           </div>
         </li>
 
