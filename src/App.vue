@@ -6,7 +6,7 @@
         <li class="lista-filmes__item" v-for="item of lista" :key="item.id">        
 
             <card-filme :titulo="item.original_title">
-                <img class="card__poster" :src="'http://image.tmdb.org/t/p/w185/' + item.poster_path" :alt="item.title"> <!-- w45, w92, w154, w300, w500-->                              
+                <img class="card__poster" :src="'http://image.tmdb.org/t/p/w185/' + item.poster_path" :alt="item.title"> <!-- w45, w92, w154, w300, w500-->                                              
             </card-filme>
 
         </li>
@@ -72,29 +72,5 @@
     .lista-filmes__item{
         display: inline-block;
     }
-
-    .card {    
-        vertical-align: top;
-        text-align: center;
-
-        padding: 0 auto;
-        margin: .8em;
-        /*border: solid 2px grey;*/
-        border-radius: .5em .5em;
-
-        box-shadow: .5em .5em 1em grey;
-        display: inline-block;    
-    }
-
-    .card__poster{
-        width: 100%;
-        border-radius: .5em .5em;
-    }
     
-    .card__titulo {
-        text-align: center;                
-        margin: 0;
-        padding: 0 .5em;                   
-    }
-
 </style>
