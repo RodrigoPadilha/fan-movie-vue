@@ -1,6 +1,6 @@
 <template>
     
-    <div class="card" @click="openDetailMovie($event)">    
+    <div class="card">    
         <div class="card__header">            
             <slot>
             </slot>
@@ -21,14 +21,17 @@
 <script>
   
     export default {
-
-        props:['title', 'releaseDate'],
-
-        methods:{
-            openDetailMovie: function (event) {
-                console.log(`Clicou em ${this.title}`)
-            }            
-        }
+        
+        props: {
+            title:{
+                type: String,
+                required: true
+            },
+            releaseDate: {
+                type: String,
+                required: true
+            }
+        }        
 
     }
 

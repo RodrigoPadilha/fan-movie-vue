@@ -8,7 +8,7 @@
             <ul class="lista-filmes">
                 <li class="lista-filmes__item" v-for="item of filteredList" :key="item.id">        
                     
-                    <card-filme :title="item.original_title" :releaseDate="item.release_date">
+                    <card-filme :title="item.original_title" :releaseDate="item.release_date" @click.native="openDetailMovie(item.original_title)">
                         <poster :posterPath="item.poster_path" :title="item.original_title" :size="'w185'" />                        
                     </card-filme>
                     
@@ -45,6 +45,12 @@
                 }
             }
 
+        },
+
+        methods: {              // Métodos que podem ser chamados a partir de interações do usuário com os componentes
+            openDetailMovie(title) {
+                alert(title)
+            }
         },
         
         data () {

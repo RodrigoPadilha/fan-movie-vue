@@ -7,7 +7,7 @@ Vue.use(VueRouter);
 
 const router = new VueRouter({ 
   routes,
-  mode:'history'
+  mode:'history'      // Desabilita a necessidade de usar o caractere "#" nas urls das rotas
  })
 
 new Vue({
