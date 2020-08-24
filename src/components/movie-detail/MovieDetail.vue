@@ -1,10 +1,8 @@
 <template>
-
-    <div> 
-        <router-view>
-        </router-view>           
+    <div>
+        Movie Detail
     </div>
-
+    
 </template>
 
 <script>
@@ -13,6 +11,6 @@
     }
 </script>
 
-<style>
-    
+<style scoped>
+
 </style>
