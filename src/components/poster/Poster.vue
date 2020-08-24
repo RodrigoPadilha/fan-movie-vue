@@ -8,7 +8,20 @@
 
 <script>
     export default {
-        props: ['posterPath', 'title', 'size']        
+        props: {
+            posterPath:{
+                type: String,
+                required: true
+            },
+            title: {
+                type: String,
+                required: true
+            },
+            size:{
+                type: String,
+                required: true
+            }
+        }
     }
 </script>
 
