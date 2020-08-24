@@ -11,6 +11,7 @@
                 <div class="info__descricao">
                     <p>Data: {{ releaseDate }}</p>
                     <p>Gênero: abc</p>
+                    <button @click="triggerAction()">Open</button>
                 </div>                
             </div>
         </div>
@@ -30,9 +31,23 @@
             releaseDate: {
                 type: String,
                 required: true
+            },
+            confirm:{
+                type: Boolean,                
             }
-        }        
-
+        },       
+        
+        methods: {
+            triggerAction(){
+                if(this.confirm){
+                    if(confirm('Confirma Open?'))
+                        this.$emit('cardActionButton');      //Chama acao do elemento Pai
+                        //this.$emit('cardActionButton', new Date())      // pode ser passado parametro para o elemento pai   
+                    return;                                                
+                }
+                this.$emit('cardActionButton')
+            }
+        }
     }
 
 </script>

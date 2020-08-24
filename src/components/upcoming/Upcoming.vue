@@ -8,8 +8,15 @@
             <ul class="lista-filmes">
                 <li class="lista-filmes__item" v-for="item of filteredList" :key="item.id">        
                     
-                    <card-filme :title="item.original_title" :releaseDate="item.release_date" @click.native="openDetailMovie(item.original_title)">
+                    <card-filme 
+                        :title="item.original_title" 
+                        :releaseDate="item.release_date" 
+                        @cardActionButton="openDetailMovie(item.original_title)"
+                        :confirm="false">
+                    <!--@cardActionButton="openDetailMovie(item.original_title, $event)">  Recebendo dados do compoenente filho-->
+
                         <poster :posterPath="item.poster_path" :title="item.original_title" :size="'w185'" />                        
+                        
                     </card-filme>
                     
                 </li>
@@ -47,8 +54,10 @@
 
         },
 
-        methods: {              // Métodos que podem ser chamados a partir de interações do usuário com os componentes
+        // Métodos que podem ser chamados a partir de interações do usuário com os componentes
+        methods: {
             openDetailMovie(title) {
+            //openDetailMovie($event, title) {  // Recebento parametro RECEBIDO do componente FILHO
                 alert(title)
             }
         },
