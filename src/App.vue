@@ -1,38 +1,60 @@
 <template>
 
-  <div>    
-    
-    <ul class="lista-filmes">
-        <li class="lista-filmes__item" v-for="item of lista" :key="item.id">        
+    <div>    
 
-            <card-filme :titulo="item.original_title">
-                <img class="card__poster" :src="'http://image.tmdb.org/t/p/w185/' + item.poster_path" :alt="item.title"> <!-- w45, w92, w154, w300, w500-->                                              
-            </card-filme>
-
-        </li>
-    </ul>
-
-  </div>
+        <h1>Próximos Lançamentos</h1>
+        <div>
+            <input type="search" class="filter" @input="textFilter = $event.target.value" placeholder="Pesquisa por filmes">
+            
+            <ul class="lista-filmes">
+                <li class="lista-filmes__item" v-for="item of filteredList" :key="item.id">        
+                    
+                    <card-filme :title="item.original_title" :releaseDate="item.release_date">
+                        <poster :posterPath="item.poster_path" :title="item.original_title" :size="'w185'" />                        
+                    </card-filme>
+                    
+                </li>
+            </ul>
+        </div>
+    </div>
 
 
 </template>
 
 <script>
     import Card from './components/card/Card.vue';    
+    import Poster from './components/poster/Poster.vue';
 
     export default {
 
+        name: 'app',        
+        
         components: {
-            'card-filme' : Card,    //usar aspas simples pois o nome "card-filme" possui ifem
-            //card: Card
+            'card-filme' : Card,    //usar aspas simples pois o nome "card-filme" possui ifem //card: Card
+            poster: Poster
+            
         },
+        
+        computed: {
 
-        name: 'app',
+            filteredList(){
+                if(this.textFilter){
+                    let exp = new RegExp(this.textFilter.trim(),'i')
+                    console.log(exp)
+                    return this.lista.filter(movie => exp.test(movie.original_title));
+                } else {
+                    return this.lista;
+                }
+            }
+
+        },
+        
         data () {
             return {
-            lista: []   
+                lista: [],
+                textFilter: ''
             }    
-        },
+        },        
 
         created() {
             const axios = require('axios');

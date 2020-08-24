@@ -1,22 +1,20 @@
 <template>
     
-    <div class="card">                
-        <div class="card__header">
-            <!--<img class="card__poster" :src="'http://image.tmdb.org/t/p/w185/' + item.poster_path" :alt="item.title">--> <!-- w45, w92, w154, w300, w500-->
+    <div class="card" @click="openDetailMovie($event)">    
+        <div class="card__header">            
             <slot>
             </slot>
         </div>
         <div class="card__body">
             <div class="info">                
-                <h2 class="info__titulo">{{ titulo }}</h2>   
+                <h2 class="info__titulo">{{ title }}</h2>   
                 <div class="info__descricao">
-                    <p>Data:01/01/2021</p>
+                    <p>Data: {{ releaseDate }}</p>
                     <p>Gênero: abc</p>
                 </div>                
             </div>
         </div>
     </div>
-
 
 </template>
 
@@ -24,7 +22,13 @@
   
     export default {
 
-        props:['titulo']
+        props:['title', 'releaseDate'],
+
+        methods:{
+            openDetailMovie: function (event) {
+                console.log(`Clicou em ${this.title}`)
+            }            
+        }
 
     }
 
@@ -42,11 +46,6 @@
 
         box-shadow: .5em .5em 1em grey;
         display: inline-block;    
-    }
-
-    .card__poster{
-        width: 100%;
-        border-radius: .5em .5em;
     }
 
     .card__body{        
