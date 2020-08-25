@@ -10,8 +10,7 @@
     export default {
         props: {
             posterPath:{
-                type: String,
-                required: true
+                type: String,                
             },
             title: {
                 type: String,

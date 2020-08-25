@@ -9,7 +9,7 @@
 </template>
 
 <script>
-    import MovieList from '../movie-list/MovieList.vue'
+    import MovieList from '../movie-list/MovieList.vue';
 
     export default {
 

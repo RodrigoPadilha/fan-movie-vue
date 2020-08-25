@@ -6,13 +6,13 @@
             <li class="movie-list__item" v-for="item of filteredList" :key="item.id">        
                 
                 <card-filme 
-                    :title="item.original_title" 
+                    :title="item.title" 
                     :releaseDate="item.release_date" 
                     @cardActionButton="openDetailMovie(item.original_title)"
                     :confirm="false">
                 <!--@cardActionButton="openDetailMovie(item.original_title, $event)">  Recebendo dados do compoenente filho-->
 
-                    <poster :posterPath="item.poster_path" :title="item.original_title" :size="'w185'" />                        
+                    <poster :posterPath="item.poster_path" :title="item.title" :size="'w185'" />                        
                     
                 </card-filme>
                 
@@ -46,7 +46,7 @@
 
             filteredList(){
                 if(this.textFilter){
-                    let exp = new RegExp(this.textFilter.trim(),'i')                    
+                    let exp = new RegExp(this.textFilter.trim(),'i')                          
                     return this.movies.filter(movie => exp.test(movie.original_title));
                 } else {
                     return this.movies;
