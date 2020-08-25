@@ -2,70 +2,26 @@
 
     <div>    
         <h1>Próximos Lançamentos</h1>
-        <div>
-            <input type="search" class="filter" @input="textFilter = $event.target.value" placeholder="Pesquisa por filmes">
-            
-            <ul class="movie-list">
-                <li class="movie-list__item" v-for="item of filteredList" :key="item.id">        
-                    
-                    <card-filme 
-                        :title="item.original_title" 
-                        :releaseDate="item.release_date" 
-                        @cardActionButton="openDetailMovie(item.original_title)"
-                        :confirm="false">
-                    <!--@cardActionButton="openDetailMovie(item.original_title, $event)">  Recebendo dados do compoenente filho-->
-
-                        <poster :posterPath="item.poster_path" :title="item.original_title" :size="'w185'" />                        
-                        
-                    </card-filme>
-                    
-                </li>
-            </ul>
-        </div>
+        
+        <upcoming-list :movies='movieList' />
     </div>
 
 </template>
 
 <script>
-    import Card from '../card/Card.vue';    
-    import Poster from '../poster/Poster.vue';
+    import MovieList from '../movie-list/MovieList.vue'
 
     export default {
 
-        name: 'app',        
+        name: 'app',  
         
         components: {
-            'card-filme' : Card,    //usar aspas simples pois o nome "card-filme" possui ifem //card: Card
-            poster: Poster
-            
-        },
-        
-        computed: {
-
-            filteredList(){
-                if(this.textFilter){
-                    let exp = new RegExp(this.textFilter.trim(),'i')
-                    console.log(exp)
-                    return this.movieList.filter(movie => exp.test(movie.original_title));
-                } else {
-                    return this.movieList;
-                }
-            }
-
-        },
-
-        // Métodos que podem ser chamados a partir de interações do usuário com os componentes
-        methods: {
-            openDetailMovie(title) {
-            //openDetailMovie($event, title) {  // Recebento parametro RECEBIDO do componente FILHO
-                alert(title)
-            }
+            'upcoming-list': MovieList,
         },
         
         data () {
             return {
-                movieList: [],
-                textFilter: ''
+                movieList: [],                
             }    
         },        
 
@@ -100,12 +56,6 @@
 
 <style>
 
-    .movie-list{
-        list-style: none;
-    }
-
-    .movie-list__item{
-        display: inline-block;
-    }
+    
     
 </style>
