@@ -11,7 +11,9 @@
                 <div class="info__descricao">
                     <p>Data: {{ releaseDate }}</p>
                     <p>Gênero: abc</p>
-                    <button @click="triggerAction()">Open</button>
+                    <router-link to="/movie-detail">
+                        <button @click="triggerAction()">Open</button>
+                    </router-link>
                 </div>                
             </div>
         </div>

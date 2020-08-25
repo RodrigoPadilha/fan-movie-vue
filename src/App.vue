@@ -4,8 +4,7 @@
         <menu-nav></menu-nav>
         
         <transition name="page">
-            <router-view>
-            </router-view>           
+            <router-view />                       
         </transition>
     </div>
 

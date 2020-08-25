@@ -5,8 +5,8 @@
         <div>
             <input type="search" class="filter" @input="textFilter = $event.target.value" placeholder="Pesquisa por filmes">
             
-            <ul class="lista-filmes">
-                <li class="lista-filmes__item" v-for="item of filteredList" :key="item.id">        
+            <ul class="movie-list">
+                <li class="movie-list__item" v-for="item of filteredList" :key="item.id">        
                     
                     <card-filme 
                         :title="item.original_title" 
@@ -46,9 +46,9 @@
                 if(this.textFilter){
                     let exp = new RegExp(this.textFilter.trim(),'i')
                     console.log(exp)
-                    return this.lista.filter(movie => exp.test(movie.original_title));
+                    return this.movieList.filter(movie => exp.test(movie.original_title));
                 } else {
-                    return this.lista;
+                    return this.movieList;
                 }
             }
 
@@ -64,7 +64,7 @@
         
         data () {
             return {
-                lista: [],
+                movieList: [],
                 textFilter: ''
             }    
         },        
@@ -88,7 +88,7 @@
                 .then(response => response.data.results )
                 .then(filmes => {
                     console.log(filmes);
-                    this.lista = filmes;
+                    this.movieList = filmes;
                 })
                 .catch(error => {          
                     console.error(error);          
@@ -100,11 +100,11 @@
 
 <style>
 
-    .lista-filmes{
+    .movie-list{
         list-style: none;
     }
 
-    .lista-filmes__item{
+    .movie-list__item{
         display: inline-block;
     }
     
