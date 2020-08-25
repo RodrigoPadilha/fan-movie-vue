@@ -1,9 +1,9 @@
 import Upcoming from './components/upcoming/Upcoming.vue';
 import MovieDetail from './components/movie-detail/MovieDetail.vue';
-import SearchMovie from './components/search-movie/SearchMovie.vue';
+import MovieSearch from './components/movie-search/MovieSearch.vue';
 
 export const routes = [
     { path: '', component: Upcoming },
-    { path: '/search-movie', title: 'Busca', component: SearchMovie },
+    { path: '/movie-search', title: 'Busca', component: MovieSearch },
     { path: '/movie-detail', title: 'Detalhe', component: MovieDetail },    
 ];
