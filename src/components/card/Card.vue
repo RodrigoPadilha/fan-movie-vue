@@ -1,6 +1,6 @@
 <template>
     
-    <div class="card">    
+    <div class="card" @click="triggerAction()">    
         <div class="card__header">            
             <slot>
             </slot>
