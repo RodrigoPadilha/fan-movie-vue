@@ -11,9 +11,10 @@
                 <div class="info__descricao">
                     <p>Data: {{ releaseDate }}</p>
                     <p>Gênero: abc</p>
-                    <router-link to="/movie-detail">
-                        <button @click="triggerAction()">Open</button>
+                    <router-link :to="{ name: 'Detalhe', params: { movie_id: movieId} }">
+                        <button>Open</button>                        
                     </router-link>
+                    <button @click="triggerAction()">Add My List</button>
                 </div>                
             </div>
         </div>
@@ -26,6 +27,10 @@
     export default {
         
         props: {
+            movieId:{
+                type: Number,
+                required: true
+            },
             title:{
                 type: String,
                 required: true

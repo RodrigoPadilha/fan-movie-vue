@@ -6,9 +6,10 @@
             <li class="movie-list__item" v-for="item of filteredList" :key="item.id">        
                 
                 <card-filme 
+                    :movieId="item.id"
                     :title="item.title" 
                     :releaseDate="item.release_date" 
-                    @cardActionButton="openDetailMovie(item.original_title)"
+                    @cardActionButton="openDetailMovie(item)"
                     :confirm="false">
                 <!--@cardActionButton="openDetailMovie(item.original_title, $event)">  Recebendo dados do compoenente filho-->
 
@@ -57,9 +58,9 @@
 
         // Métodos que podem ser chamados a partir de interações do usuário com os componentes
         methods: {
-            openDetailMovie(title) {
+            openDetailMovie(movie) {
             //openDetailMovie($event, title) {  // Recebento parametro RECEBIDO do componente FILHO
-                alert(title)
+                alert(`Nome: ${movie.title} Id: ${movie.id}`)                
             }
         },
         
